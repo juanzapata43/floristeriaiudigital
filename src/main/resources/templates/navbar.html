@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+    <div th:fragment="nav" class="bg-blue-500 py-4 px-6 rounded-md">
+        <nav class="flex flex-col items-center space-y-2">
+            <!-- Título -->
+            <a href="/" class="text-white text-2xl font-bold">Floristería IUDigital</a>
+            <!-- Menú -->
+            <ul class="flex space-x-4">
+                <li>
+                    <a th:href="@{/inventario}" class="text-white hover:text-gray-200 text-lg">Flores</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</body>
+</html>
+
