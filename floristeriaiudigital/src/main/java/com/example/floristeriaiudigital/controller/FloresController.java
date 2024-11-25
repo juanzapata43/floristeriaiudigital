@@ -52,7 +52,7 @@ public class FloresController {
 
     @PostMapping("/editarflor/{id}")
     public String updateFlor(@PathVariable("id") Long id, @ModelAttribute FloresModel flor) {
-        flor.setIdFlor(id);
+        flor.setId_flor(id);
         floresService.updateFlor(flor);
         return "redirect:/inventario";
     }
