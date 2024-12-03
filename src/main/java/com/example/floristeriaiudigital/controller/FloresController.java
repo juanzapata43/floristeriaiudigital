@@ -12,7 +12,7 @@ import org.springframework.stereotype.Controller;
 import com.example.floristeriaiudigital.model.FloresModel;
 import com.example.floristeriaiudigital.service.FloresService;
 
-@Controller
+@Controller("/flores")
 public class FloresController {
     private FloresService floresService;
 
