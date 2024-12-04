@@ -38,7 +38,7 @@
       >
         <form
           class="bg-fuchsia-100 max-w-3xl mx-auto ring-fuchsia-200 p-8 rounded-lg"
-          action="/guardarflor"
+          th:action="@{/flores/guardarflor}"
           method="POST"
         >
           <h1 class="text-3xl mx-auto text-center font-bold m-4">Crear Flor</h1>
@@ -147,13 +147,13 @@
             <td class="border border-blue-300 py-2 px-4" th:text="${flor.precio_venta}">$1200</td>
             <td class="border border-blue-300 py-2 px-4 flex justify-between">
               <a
-                th:href="@{/eliminarflor/{id_flor}(id_flor=${flor.id_flor})}"
+                th:href="@{/flores/eliminarflor/{id_flor}(id_flor=${flor.id_flor})}"
                 class="text-blue-600 cursor-pointer"
               >
                 <i class="fas fa-trash"></i>
               </a>
               <a
-                th:href="@{/editarflor/{id_flor}(id_flor=${flor.id_flor})}"
+                th:href="@{/flores/editarflor/{id_flor}(id_flor=${flor.id_flor})}"
                 class="text-fuchsia-600 cursor-pointer"
               >
                 <i class="fas fa-pencil-alt"></i>

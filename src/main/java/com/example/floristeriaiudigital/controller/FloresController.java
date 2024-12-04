@@ -11,9 +11,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.stereotype.Controller;
 import com.example.floristeriaiudigital.model.FloresModel;
 import com.example.floristeriaiudigital.service.FloresService;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller("/flores")
+@Controller
+@RequestMapping("/flores")
 public class FloresController {
+    public static final String REDIRECT_FLORES_INVENTARIO = "redirect:/flores/inventario";
     private FloresService floresService;
 
     public FloresController(FloresService floresService) {
@@ -30,23 +33,23 @@ public class FloresController {
     @PostMapping("/guardarflor")
     public String saveFlor(@ModelAttribute FloresModel flor) {
         this.floresService.saveFlor(flor);
-        return "redirect:/inventario";
+        return REDIRECT_FLORES_INVENTARIO;
     }
 
     @GetMapping("/eliminarflor/{id_flor}")
     public String deleteFlor(@PathVariable("id_flor") Long id) {
         floresService.deleteFlorById(id);
-        return "redirect:/inventario";
+        return REDIRECT_FLORES_INVENTARIO;
     }
 
-    @GetMapping("/editarflor/{id}")
-    public String showEditForm(@PathVariable("id") Long id, Model model) {
+    @GetMapping("/editarflor/{id_flor}")
+    public String showEditForm(@PathVariable("id_flor") Long id, Model model) {
         Optional<FloresModel> florOpt = floresService.getFlorById(id);
         if (florOpt.isPresent()) {
             model.addAttribute("flor", florOpt.get());
             return "editarflor";
         } else {
-            return "redirect:/inventario";
+            return REDIRECT_FLORES_INVENTARIO;
         }
     }
 
@@ -54,6 +57,6 @@ public class FloresController {
     public String updateFlor(@PathVariable("id") Long id, @ModelAttribute FloresModel flor) {
         flor.setId_flor(id);
         floresService.updateFlor(flor);
-        return "redirect:/inventario";
+        return REDIRECT_FLORES_INVENTARIO;
     }
 }
